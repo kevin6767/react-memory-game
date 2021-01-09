@@ -1,16 +1,14 @@
 import React, { useState } from 'react'
 
-import Board from './components/Board'
-import { cardCreation } from './util'
-
+import Board from './components/Board/Board'
+import { buildCards } from './util'
 function App() {
-	const [cardsArr, updateCardsArr] = useState(cardCreation())
-
+	const cards = buildCards()
 	return (
 		<div className='wrapper'>
 			<div className='game-container'>
-				<h1>Hellow!</h1>
-				<Board cardsArr={cardsArr} />
+				<h1>Matching Game! Find two of the same pokemon!</h1>
+				<Board cards={cards} />
 			</div>
 		</div>
 	)

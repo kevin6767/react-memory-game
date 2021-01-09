@@ -11,70 +11,48 @@ import Blastoise from '../imgs/9.svg'
 import Caterpie from '../imgs/10.svg'
 import Metapod from '../imgs/11.svg'
 import Butterfree from '../imgs/12.svg'
+import backImg from '../imgs/cardPattern.png'
 
-const pokeArray = [
-	{
-		id: 1,
-		image: Bulbasaur,
-	},
-	{
-		id: 2,
-		image: Ivysaur,
-	},
-	{
-		id: 3,
-		image: Venusaur,
-	},
-	{
-		id: 4,
-		image: Charmander,
-	},
-	{
-		id: 5,
-		image: Charmeleon,
-	},
-	{
-		id: 6,
-		image: Charizard,
-	},
-	{
-		id: 7,
-		image: Squirtle,
-	},
-	{
-		id: 8,
-		image: Wartortle,
-	},
-	{
-		id: 9,
-		image: Blastoise,
-	},
-	{
-		id: 10,
-		image: Caterpie,
-	},
-	{
-		id: 11,
-		image: Metapod,
-	},
-	{
-		id: 12,
-		image: Butterfree,
-	},
-]
-function randomize(array) {
-	let i = array.length - 1
-	for (; i > 0; i--) {
-		const j = Math.floor(Math.random() * (i + 1))
-		const temp = array[i]
-		array[i] = array[j]
-		array[j] = temp
+function buildCards() {
+	let id = 0
+	const images = {
+		Bulbasaur,
+		Ivysaur,
+		Venusaur,
+		Charmander,
+		Charmeleon,
+		Charizard,
+		Squirtle,
+		Wartortle,
+		Blastoise,
+		Caterpie,
+		Metapod,
+		Butterfree,
 	}
-	return array
+	const cards = Object.keys(images).reduce((result, item) => {
+		const getCard = () => ({
+			id: id++,
+			type: item,
+			backImg,
+			frontImg: images[item],
+			flipped: false,
+			selected: false,
+		})
+		return [...result, getCard(), getCard()]
+	}, [])
+	return suffle(cards)
 }
 
-function cardCreation() {
-	return randomize(pokeArray.concat(pokeArray))
+function suffle(arr) {
+	let len = arr.length
+	for (let i = 0; i < len; i++) {
+		let randomIdx = Math.floor(Math.random() * len)
+		let copyCurrent = { ...arr[i] }
+		let copyRandom = { ...arr[randomIdx] }
+		arr[i] = copyRandom
+		arr[randomIdx] = copyCurrent
+	}
+	return arr
 }
 
-export { cardCreation }
+export { buildCards }

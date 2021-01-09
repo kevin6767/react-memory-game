@@ -12,7 +12,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 100%;
+	height: 90%;
 }
 
 .game-container {
@@ -25,9 +25,9 @@ body {
 
 .board-container {
 	display: grid;
-	grid-template-columns: repeat(8, minmax(160px, 1fr));
-	grid-auto-rows: 210px;
-	grid-gap: 16px;
+	grid-template-columns: repeat(8, minmax(120px, 1fr));
+	grid-auto-rows: 150px;
+	grid-gap: 75px;
 }
 
 .card-wrapper {
@@ -36,46 +36,25 @@ body {
 	cursor: pointer;
 }
 
-.card-wrapper.selected {
-	opacity: 0.5;
-	pointer-events: none; /* taken care of by js but whatevs */
-}
-
-.card {
+.Card {
 	border-radius: 8px;
-	height: 100%;
-	width: 100%;
+	height: 50px;
+	width: 50px;
+}
+.Card img {
+	height: 150px;
+	width: 150px;
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
 		0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-	transition: transform 1s;
+	transition: transform 2s;
 	transform-style: preserve-3d;
 }
-
-.card__face {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	backface-visibility: hidden;
-	border-radius: 8px;
+.Card .selected {
+	transform: rotate(360deg);
 }
-
-.card__face--front {
-	background-size: cover;
-}
-
-.card__face--back {
-	transform: rotateY(180deg);
-	background-repeat: no-repeat;
-	background-size: contain;
-}
-
-.card.is-flipped {
-	transform: rotateY(180deg);
-}
-
-.heading {
-	margin: 0 5px 0;
+.score-holder {
+	text-align: center;
+	margin: 10px;
+	padding: 10px;
+	font-size: 24px;
 }
