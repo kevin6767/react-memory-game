@@ -49,7 +49,7 @@ const Board = (props) => {
 	useEffect(() => {
 		setTimeout(() => {
 			setCards(removingIndex(cards, completed))
-		}, 1000)
+		}, 500)
 	}, [completed])
 
 	const handleRestart = () => {

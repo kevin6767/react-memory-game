@@ -1,14 +1,17 @@
 import React from 'react'
+import backImg from '../../imgs/cardPattern.png'
 
-const Card = (props) => {
-	const { frontImg, backImg, flipped, onClick, selected } = props
-	const img = flipped ? frontImg : backImg
-	const selectedClass = selected ? 'selected' : ''
+const Card = ({ frontImg, flipped, onClick, selected }) => {
 	function changeSize(e) {
 		e.target.style.transform = 'scale(1,1.2)'
 	}
 	function changeBack(e) {
 		e.target.style.transform = 'scale(1,1)'
+	}
+	const imgProps = {
+		src: flipped ? frontImg : backImg,
+		className: selected ? 'selected' : '',
+		alt: '',
 	}
 	return (
 		<div className='card-wrapper'>
@@ -18,7 +21,7 @@ const Card = (props) => {
 				onMouseEnter={changeSize}
 				onMouseLeave={changeBack}
 			>
-				<img src={img} alt='' className={`${selectedClass}`} />
+				<img {...imgProps} />
 			</div>
 		</div>
 	)
