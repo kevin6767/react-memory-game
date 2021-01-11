@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Card from '../Card/Card'
-
+import ScoreContainer from '../ScoreContainer/ScoreContainer'
 const Board = (props) => {
 	const [cards, setCards] = useState(props.cards)
 	const [checkers, setCheckers] = useState([])
@@ -14,11 +14,6 @@ const Board = (props) => {
 		const cardsInCheckersMatched = validateCheckers(newCheckers)
 		if (cardsInCheckersMatched) {
 			setCompleted([...completed, newCheckers[0].type])
-
-			console.log(completed)
-			for (let index = 0; index < completed.length; index++) {
-				completed[index].selected = true
-			}
 			setCount(count + 1)
 		}
 		if (checkersFull(newCheckers)) {
@@ -50,7 +45,7 @@ const Board = (props) => {
 
 	return (
 		<div className='game-holder'>
-			<div className='score-holder'> Your Score is {count}</div>
+			<ScoreContainer count={count} />
 			<div className='board-container'>
 				{cards.map((card) => (
 					<Card {...card} onClick={onCardClick(card)} key={card.id} />

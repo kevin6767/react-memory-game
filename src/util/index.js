@@ -1,4 +1,3 @@
-import React from 'react'
 import Bulbasaur from '../imgs/1.svg'
 import Ivysaur from '../imgs/2.svg'
 import Venusaur from '../imgs/3.svg'
