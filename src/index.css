@@ -54,7 +54,10 @@ body {
 }
 .score-holder {
 	text-align: center;
-	margin: 10px;
 	padding: 10px;
+	font-size: 24px;
+}
+.btn-holder {
+	text-align: center;
 	font-size: 24px;
 }

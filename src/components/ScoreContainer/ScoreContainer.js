@@ -1,7 +1,7 @@
-const ScoreContainer = (score) => {
+const ScoreContainer = ({ count }) => {
 	return (
 		<div className='score-holder'>
-			{score.count < 12 ? `Your score is: ${score.count}` : 'You won!'}
+			{count < 12 ? `Your score is: ${count}` : 'You won!'}
 		</div>
 	)
 }
